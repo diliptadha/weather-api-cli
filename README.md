@@ -10,13 +10,16 @@ git clone https://github.com/diliptadha/weather-api-cli.git
 
 ## install dependencies
 
-`npm install`
+```bashe
+npm install
+npm link
+```
 
 ## run
 
-```bash
-node index.js
-```
+`node index.js`
+or
+`weather`
 
 ## API for fetching weather data
 
