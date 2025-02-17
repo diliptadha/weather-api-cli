@@ -15,7 +15,7 @@ const displayWeather = (weather) => {
   console.log("----------------------------------------");
 };
 
-const main = async () => {
+const weatherSearch = async () => {
   try {
     const searchQuery = await input({
       message: "Enter city name or postal code:",
@@ -48,5 +48,35 @@ const main = async () => {
     }
   }
 };
+
+async function mainMenu() {
+  const choices = [
+    { value: "search", label: "1. Search Weather" },
+    { value: "exit", label: "2. Exit" },
+  ];
+
+  const action = await select({
+    message: "What would you like to do?",
+    choices,
+  });
+
+  return action;
+}
+
+async function main() {
+  console.log("welcome to weather CLI!\n");
+
+  let action = "search";
+
+  while (action !== "exit") {
+    if (action === "search") {
+      action = await weatherSearch();
+    } else {
+      action = await mainMenu();
+    }
+  }
+
+  console.log("thank you for using weather CLI. goodbye! 👋");
+}
 
 main();
